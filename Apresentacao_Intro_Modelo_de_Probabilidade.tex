@@ -1,0 +1,298 @@
+% Modelo de slides para projetos de disciplinas do Abel
+\documentclass[10pt]{beamer}
+
+\usetheme[progressbar=frametitle]{metropolis}
+\usepackage{appendixnumberbeamer}
+\usepackage[numbers,sort&compress]{natbib}
+\bibliographystyle{plainnat}
+
+\usepackage{booktabs}
+\usepackage[scale=2]{ccicons}
+
+\usepackage{xspace}
+\newcommand{\themename}{\textbf{\textsc{metropolis}}\xspace}
+
+
+\title{Probabilidade}
+\subtitle{Seminário I}
+% \date{\today}
+\date{}
+\author{Davi Barreira, Guilherme Macieira, Maria Gontijo}
+\institute{FGV - Escola de Matemática Aplicada}
+% \titlegraphic{\hfill\includegraphics[height=1.5cm]{logo.pdf}}
+
+\begin{document}
+
+\maketitle
+
+% \begin{frame}{Table of contents}
+%   \setbeamertemplate{section in toc}[sections numbered]
+%   \tableofcontents[hideallsubsections]
+% \end{frame}
+
+% \section{Introduction}
+
+\begin{frame}[fragile]{Modelo Probabilístico}
+
+  Um Modelo Probabilístico, ou Espaço de Probabilidade, é definido pela tríplice ($\Omega$,$\mathcal{F}$,
+  $\mathrm{P}$).
+  \begin{itemize}
+  \item $\Omega$ é o espaço amostral
+  \item $\mathcal{F}$ é uma $\sigma$-álgebra de subconjuntos de $\Omega$
+  \item $\mathrm{P}$ é uma função de probabilidade em $\mathcal{F}$
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Modelo Probabilístico}
+\begin{block}{Definição 1 - Espaço Amostral ($\Omega$)}
+Conjunto não-vazio de todos os resultados possíveis de um experimento. Todo subconjunto $A \subset \Omega$ será chamado de \textit{evento}. Se $\omega \in \Omega$, o evento $\{\omega\}$ será chamado de \textit{evento elementar}.
+\end{block}
+\begin{block}{Exemplos:}
+\begin{itemize}
+    \item $\Omega = \{H,T\}$ - Finito
+    \item $\Omega = \{1,2,3,... \}$ - Enumerável
+    \item $\Omega = [0,1]$ - Não enumerável
+\end{itemize}
+\end{block}
+\end{frame}
+
+
+\begin{frame}[fragile]{Modelo Probabilístico}
+
+  Antes de definirmos o que é $\mathcal{F}$, precisamos definir uma álgebra e uma $\sigma$-álgebra.
+\begin{block}{Definição 2 - Álgebra}
+Seja $\Omega$ um conjunto não-vazio. A classe $\mathcal{F}_o$ de subconjuntos de $\Omega$ é chamada de álgebra caso satisfaça os seguintes axiomas:
+\begin{itemize}
+    \item Axioma 1.\quad $\Omega \in \mathcal{F}_o$ 
+    \item Axioma 2.\quad Se $A \in \mathcal{F}_o$, então $A^c \in \mathcal{F}_o$ 
+    \item Axioma 3.\quad Se $A_1,...,A_n \in \mathcal{F}_o$, então $\bigcup\limits_{i=1}^{n} A_{i} \in \mathcal{F}_o$ 
+    % \item Axioma 3.\quad Se $A,B \in \mathbb{A}$, então $A \cup B \in \mathbb{A}$ 
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile]{Modelo Probabilístico}
+Se estendermos o Axioma 3 para uniões enumeráveis:
+\begin{itemize}
+    \item Axioma 3'.\quad Se $A_n \in \mathcal{F}$ para $\textit{n}=1,2,3...$, então $\bigcup\limits_{i=1}^{\infty} A_{i} \in \mathcal{F}_o$ 
+\end{itemize}
+\begin{block}{Definição 3 - $\sigma$-Álgebra}
+Seja $\Omega$ um conjunto não-vazio. A classe $\mathcal{F}_o$ de subconjuntos de $\Omega$ é chamada de $\sigma$-álgebra caso satisfaça os Axiomas 1, 2 e 3'.
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile]{Modelo Probabilístico}
+A partir da definição de $\sigma$-álgebra valem as seguintes propriedades:
+\begin{itemize}
+    \item P1. \quad $\varnothing \in \mathcal{F}$
+    \begin{itemize}
+        \item[] Prova: $\Omega \in \mathcal{F} \therefore \Omega^c=\varnothing \in \mathcal{F}$
+    \end{itemize}
+    \item P2. \quad Se $A_1,A_2,... \in \mathcal{F},$ então $\bigcap\limits_{i=1}^{\infty} A_{i} \in \mathcal{F}$
+    \begin{itemize}
+        \item[] Prova: $(\bigcup\limits_{i=1}^{\infty} A^c_{i})^c=
+        \bigcap\limits_{i=1}^{\infty} A_{i}$
+    \end{itemize}
+\end{itemize}
+\let\thefootnote\relax\footnote{$\sigma(A) \cap \sigma(B)$ é uma $\sigma$-álgebra?
+E $\sigma(A) \cup \sigma(B)$?}
+\end{frame}
+
+
+\begin{frame}[fragile]{Modelo Probabilístico}
+\textbf{$\sigma$-Álgebra de Borel}
+
+Para um espaço amostral ($\Omega$) finito ou enumerável, $\mathcal{F}$ será (normalmente)
+o conjunto das partes de $\Omega$.
+
+Quando o espaço amostral não é enumerável, o conjunto das partes se torna problemático, assim, utiliza-se a chamada $\sigma$-álgebra de Borel ($\mathcal{B}$).
+
+A $\sigma$-álgebra de Borel é a menor $\sigma$-álgebra que contém todo intervalo
+do tipo $[a,b] \subset \mathbb{R}$.
+% Mas além dos intervalos $[a,b]$, ela contém
+% todo conjunto que pode ser obtido através de um número enumerável de intervalos
+% aplicando as operações $\cap$, $\cup$ e $^c$ um número enumerável de vezes.
+\end{frame}
+
+% \begin{frame}[fragile]{Modelo Probabilístico}
+% Um pouco de intuição sobre $\sigma$-álgebra...
+% \end{frame}
+
+
+\begin{frame}[fragile]{Modelo Probabilístico}
+\begin{block}{Definição 4 - Função de Probabilidade }
+Seja um espaço mensurável ($\Omega, \mathcal{F}$), onde $\Omega$ é o espaço amostral e $\mathcal{F}$ uma $\sigma$-álgebra de subconjuntos de $\Omega$. Uma função $\mathrm{P}$ é chamada de \textbf{medida de probabilidade} se satisfaz os seguintes axiomas:
+\begin{itemize}
+    \item Axioma 1. \quad $\mathrm{P}(A)\geq 0, \forall A \in \mathcal{F}$
+    \item Axioma 2. \quad $\mathrm{P}(\Omega)=1$
+    \item Axioma 3. (\textit{Aditividade finita}) Se $A_1, A_2,..., A_n \in \mathcal{F}$ são disjuntos ($A_i \cap A_j = \varnothing$ se $i\neq j$), então $\mathrm{P}(\bigcup\limits_{i=1}^{n} A_{i})=\sum_{i=1}^{n} \mathrm{P}(A_i)$
+    \item Axioma 3'. ($\sigma$-aditividade) Se $A_1, A_2,... \in \mathcal{F}$ são disjuntos, então $\mathrm{P}(\bigcup\limits_{i=1}^{\infty} A_{i})=\sum_{i=1}^{\infty} \mathrm{P}(A_i)$
+    \let\thefootnote\relax\footnote{Axioma 3'$\implies$ Axioma 3}
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile]{Modelo Probabilístico}
+\textbf{Continuidade de probabilidade no vazio}
+
+Dados os Axiomas 1, 2 e 3, o Axioma 3' é equivalente ao seguinte axioma:
+\begin{itemize}
+    \item Axioma 4. ("Continuidade no vazio") Se a sequência $(A_n)_{n\geq 1}$
+    decresce para o vazio, onde $A_n \in \mathcal{F}$ $\forall n$, então
+    $\mathrm{P}(A_n)\rightarrow0$, quando $n \rightarrow \infty$.
+\end{itemize}
+Note que $(A_n)_{n\geq 1}$ decresce para o vazio $(A_n\downarrow \varnothing)$
+significa que $A_n \supset A_{n+1}$ $\forall n$ e $\bigcap_{n\geq 1}A_n = \varnothing$.
+\end{frame}
+
+\begin{frame}[fragile]{Modelo Probabilístico}
+\textbf{Provando a equivalência da \textit{continuidade no vazio}}
+
+Dados os Axiomas 1, 2 e 3, o Axioma 3' $\iff$ Axioma 4 
+\begin{itemize}
+    \item (A3' $\implies$ A4). Suponha que a $\sigma$-aditividade é válida.
+    Sejam $A_1, A_2, ... \in \mathcal{F}$ tal que
+    $A_n\downarrow \varnothing$. Queremos provar que
+    $\mathrm{P}(A_n)\xrightarrow{n\rightarrow \infty}0$.
+\end{itemize}
+\begin{itemize}
+    \item (A4 $\implies$ A3'). Sejam $A_1,A_2,... \in \mathcal{F}$ disjuntos
+    ($\bigcap_{n=1}^{\infty}A_n=\varnothing$).
+    Queremos provar que $\mathrm{P}(\bigcup_{n=1}^{\infty}A_n=\varnothing)
+    =\sum_{n=1}^{\infty}\mathrm{P}(A_n)$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Modelo Probabilístico}
+\textbf{Propriedades de Probabilidade}
+A partir dos Axiomas de probabilidade, as seguintes propriedades podem ser demonstradas:
+\begin{itemize}
+    \item $\mathrm{P}(A^c) = 1 - \mathrm{P}(A)$
+    \item $1 \leq \mathrm{P}(A) \geq 0$
+    \item $A_1 \subset A_2 \implies \mathrm{P}(A_1) \leq \mathrm{P}(A_2)$
+    \item $\mathrm{P}(\bigcup_{n=1}^{\infty}A_n) \leq
+    \sum_{n=1}^{\infty}\mathrm{P}(A_n)$
+    \item (\textit{Continuidade de probabilidade)}. Se $A_n\downarrow A$, então $\mathrm{P}(A_n) \downarrow \mathrm{P}(A)$. Se $A_n\uparrow A$, então
+    $\mathrm{P}(A_n) \uparrow \mathrm{P}(A)$
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Modelo Probabilístico}
+\begin{block}{Teorema da Extensão de Carathéodory}
+Seja $\mathcal{F}_o$ uma álgebra dos subconjuntos do espaço amostral $\Omega$,
+de forma que $\mathcal{F}=\sigma(\mathcal{F}_o)$ seja a $\sigma$-álgebra gerada
+por essa álgebra. Suponha que $\mathrm{P}_o:\mathcal{F}_o\rightarrow[0,1]$,
+satisfazendo $\mathrm{P}_o=1$ e $\sigma$-aditividade em $\mathcal{F}_o$.
+
+Assim, $\mathrm{P}_o$ pode ser extendido de maneira única para uma medida de probabilida $\mathrm{P}$ em $(\Omega,\mathcal{F})$, de forma que $\mathrm{P}(A)=
+\mathrm{P}_o(A)$ para todo $A \in \mathcal{F}_o$.
+\end{block}
+% (queremos que a probabilidade se comporte de uma certa maneira, porém é difícil definir quando temos eventos de forma variável. Queremos definir a função de probabilidade para um subconjunto mais simples e estender para uma sigma-algebra sem perder as propriedades enunciadas.)
+\end{frame}
+
+\begin{frame}[fragile]{Medida de Lebesgue}
+\begin{block}{Definição 5 - Medida }
+Seja ($\Omega, \mathcal{F}$) um espaço mensurável. Uma medida é uma função $\mu: \mathcal{F}\rightarrow[0,\infty]$, que satisfaz os seguintes axiomas:
+\begin{itemize}
+    \item Axioma 1. \quad $\mu(\varnothing)=0$
+    \item Axioma 2. ($\sigma$-aditividade) Se $A_1, A_2,... \in \mathcal{F}$ são disjuntos, então $\mu(\bigcup\limits_{i=1}^{\infty} A_{i})=\sum_{i=1}^{\infty} \mu(A_i)$
+\end{itemize}
+A medida de probabilidade é uma medida $\mathrm{P}$ com a propriedade adicional que $\mathrm{P}(\Omega)=1$.
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile]{Medida de Lebesgue}
+\textbf{Construindo a medida de Lebesgue em $[0,1]$}
+
+Iremos construir a medida uniforme de probablidade no intervalo $[0,1]$, também conhecida como medida de \textbf{Lebesgue}.
+
+Em uma medida de Lebesgue, temos que:
+
+\begin{itemize}
+\item Para $[a,b] \subset [0,1]$ ,\quad $\mu([a,b])=b-a$
+
+\end{itemize} 
+Assim, toda medida representa o comprimento do intervalo.
+
+Por questão de conveniência, iniciaremos pelo espaço amostral $\Omega=(0,1]$, para depois estender para $[0,1]$.
+
+\end{frame}
+
+\begin{frame}[fragile]{Medida de Lebesgue}
+\begin{block}{Passos para construção da probabilidade uniforme:}
+\begin{itemize}
+    \item[1] Partir de uma classe $\mathcal{F}_o$ contida em $\Omega=(0,1]$;
+    \item[2] Provar que a $\sigma$-álgebra gerada por $\mathcal{F}_o$ é a $\sigma$-álgebra de Borel ($\mathcal{B})$;
+    \item[3] Provar que $\mathcal{F}_o$ é uma álgebra;
+    \item[4] Aplicar o Teorema de Carathéodory.
+    % \item[4] Aplicar o Teorema de Caratheódory para provar a existência da função de probabilidade uniforme no espaço mensurável $(\Omega,\mathcal{B})$.
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile]{Medida de Lebesgue}
+\begin{block}{1. Definir a classe $\mathcal{F}_o$ contida em $(0,1]$}
+\begin{itemize}
+    \item $\varnothing \in \mathcal{F}_o$;
+    \item Se $A \in \mathcal{F}_o$, então:
+    $$A = (a_1,b_1] \cup (a_2,b_2] \cup ... \cup (a_n,b_n]$$
+    Onde $0\leq a_1 < b_1 \leq a_2 < b_2 \leq ... \leq a_n < b_n \leq 1$, e $n \in \mathbb{N}$
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile]{Medida de Lebesgue}
+\textbf{2. Provar que $\sigma(\mathcal{F}_o)=\sigma(\mathcal{C}) =\mathcal{B}$}
+
+Seja $\mathcal{C}$ a classe de todos os intervalos $[a,b]$ contidos em $(0,1]$.
+
+Sabemos que a $\sigma$-álgebra gerada por $\mathcal{C}$ é a $\sigma$-álgebra de Borel ($\mathcal{B}$).
+\end{frame}
+
+\begin{frame}[fragile]{Medida de Lebesgue}
+\textbf{3. Provar que:}
+\begin{itemize}
+    \item $\mathcal{F}_o$ é uma álgebra;
+    \item $\mathcal{F}_o$ não é uma $\sigma$-álgebra.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Medida de Lebesgue}
+\textbf{4. Aplicar o Teorema de Caratheódory}
+
+Para todo $A \in \mathcal{F}_o$ não-vazio, temos:
+$$A = (a_1,b_1] \cup (a_2,b_2] \cup ... \cup (a_n,b_n]$$
+Definimos uma função que corresponde ao comprimento total:
+$$\mathrm{P}_o =(b_1 - a_1) + ... + (b_n - a_n)$$
+Ao aplicar o Teorema de Carathéodory, concluímos que existe uma função de probabilidade $\mathrm{P}$, chamada de Lebesgue ou uniforme, definida em $\mathcal{B}$ que é igual a $\mathrm{P}_o$ em $\mathcal{F}_o$
+\end{frame}
+
+\begin{frame}[fragile]{Medida de Lebesgue}
+\textbf{Construindo a medida de Lebesgue em $\mathbb{R}$}
+
+Considere agora que $\Omega = \mathbb{R}$. Definimos um $\sigma$-álgebra dos subconjuntos de $\mathbb{R}$ do seguinte modo:
+\begin{itemize}
+    \item Para um $n$ qualquer, definimos a $\sigma$-álgebra de Borel de $(n,n+1]$ como
+    a $\sigma$-álgebra gerada pelos conjuntos da forma $[a,b] \subset (n,n+1]$. Assim, $A$ é um subconjunto de Borel
+    de $\mathbb{R}$ se $A \cap (n,n+1]$ é um subconjunto de Borel de $(n,n+1]$, para todo $n$.
+\end{itemize}
+Seja $\mathrm{P}_n$ uma medida uniforme em $(n,n+1]$. Dado um conjunto $A \subset \mathbb{R}$, podemos decompor $A$ em uma quantidade contável de pedaços e calcular o "comprimento" $\mu(A)$ usando:
+$$\mu(A) = \sum_{n=-\infty}^{\infty} \mathrm{P}_n(A\cap(n,n+1])$$
+
+
+\end{frame}
+
+
+% \begin{frame}{Bibliografia}
+%     \cite{Knuth92}, \citet{ConcreteMath}, \citeauthor{Er01}.
+% \end{frame}
+
+% \begin{frame}[allowframebreaks]{Referências}
+
+%   \bibliography{demo}
+  
+  %\bibliographystyle{abbrv}
+
+% \end{frame}
+
+\end{document}
